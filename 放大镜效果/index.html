@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一个放大镜效果demo</title>
+    <style>
+        body,
+        div,
+        img {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        #box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 450px;
+            height: 450px;
+            box-shadow: 3px 3px 10px 0 #111;
+        }
+
+        #box img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #mark {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 225px;
+            background-color: #000;
+            opacity: 0.5;
+            cursor: move;
+        }
+        #boxRight{
+            display:none;
+            position: absolute;
+            top: 20px;
+            left: 500px;
+            width: 450px;
+            height: 450px;
+            overflow: hidden;
+        }
+        #boxRight img{
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="images/s.jpg" alt="">
+        <div id="mark"></div>
+    </div>
+    <div id="boxRight">
+        <img src="images/b.jpg" alt="">
+    </div>
+
+
+    <script>
+        //原理：mark横向是box的一半，纵向也是box的一半，右侧大图横向、纵向都应
+        // 该是小图的二倍
+        var tempL = 0
+        var tempT = 0
+        var box = document.getElementById('box')
+        var mark = document.getElementById('mark')
+        var boxRight = document.getElementById('boxRight')
+        function setPosition(e) {
+            //用鼠标位置减去盒子的偏移量以及阴影部分的宽高的一半得放大镜的位置
+            var top = e.clientY - box.offsetTop - (mark.offsetHeight / 2)
+            var left = e.clientX - box.offsetLeft - (mark.offsetWidth / 2)
+            //做边界判断 让放大镜待在盒子里面
+            var minL = 0
+            var minT = 0
+            var maxL = box.offsetWidth - mark.offsetWidth
+            var maxT = box.offsetHeight - mark.offsetHeight
+
+            //left 边界判断
+            if (left < minL) {
+                mark.style.left = minL + 'px'
+                tempL = minL
+            } else if (left > maxL) {
+                mark.style.left = maxL + 'px'
+                tempL = maxL
+
+            } else {
+                mark.style.left = left + 'px'
+                tempL = left
+
+            }
+            // top边界判断
+            if (top < minT) {
+                mark.style.top = minT + 'px'
+                tempT = minT
+
+            } else if (top > maxT) {
+                mark.style.top = maxT + 'px'
+                tempT = maxT
+
+            } else {
+                mark.style.top = top + 'px'
+                tempT = top
+
+            }
+            // 右侧图片移动:左侧移动多少，右侧大图正好一定他的两倍
+            var oImg = boxRight.getElementsByTagName('img')[0]
+            oImg.style.left = -tempL*2+'px'
+            oImg.style.top = -tempT*2+'px'
+
+        }
+        //enter和leave事件是默认不冒泡的
+        box.onmouseenter = function (e) {
+            mark.style.display = 'block'
+            boxRight.style.display = 'block'
+            setPosition(e)
+
+        }
+        box.onmousemove = function (e) {
+            setPosition(e)
+        }
+
+        box.onmouseleave = function (e) {
+            mark.style.display = 'none'
+            boxRight.style.display = 'none'
+
+            
+
+        }
+    </script>
+</body>
+
+</html>

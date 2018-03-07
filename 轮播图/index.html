@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>一个轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        
+        body {
+            padding: 20px;
+        }
+        
+        #container {
+            position: relative;
+            width: 590px;
+            height: 470px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+        
+        #list {
+            position: absolute;
+            z-index: 1;
+            width: 4200px;
+            height: 470px;
+        }
+        
+        #list img {
+            float: left;
+            width: 590px;
+            height: 470px;
+        }
+        
+        #buttons {
+            position: absolute;
+            left: 250px;
+            bottom: 20px;
+            z-index: 2;
+            height: 10px;
+            width: 100px;
+        }
+        
+        #buttons span {
+            float: left;
+            margin-right: 5px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            background: #333;
+            cursor: pointer;
+        }
+        
+        #buttons .on {
+            background: orangered;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 180px;
+            z-index: 2;
+            display: none;
+            width: 40px;
+            height: 40px;
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 39px;
+            text-align: center;
+            color: #fff;
+            background-color: RGBA(0, 0, 0, .3);
+            cursor: pointer;
+        }
+        
+        .arrow:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+        
+        #container:hover .arrow {
+            display: block;
+        }
+        
+        #prev {
+            left: 20px;
+        }
+        
+        #next {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+        <div id="container">
+                <div id="list" style="left: -590px;">
+                    <img src="images/5.jpg" alt="5" />
+                    <img src="images/1.jpg" alt="1" />
+                    <img src="images/2.jpg" alt="2" />
+                    <img src="images/3.jpg" alt="3" />
+                    <img src="images/4.jpg" alt="4" />
+                    <img src="images/5.jpg" alt="5" />
+                    <img src="images/1.jpg" alt="1" />
+                </div>
+                <div id="buttons">
+                    <span index="1" class="on"></span>
+                    <span index="2"></span>
+                    <span index="3"></span>
+                    <span index="4"></span>
+                    <span index="5"></span>
+                </div>
+                <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+                <a href="javascript:;" id="next" class="arrow">&gt;</a>
+            </div>
+
+<script src="banner.js"></script>
+</body>
+</html>
+
