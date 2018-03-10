@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .box {
+            margin: 10px;
+            width: 300px;
+            padding: 10px;
+            border: 1px dashed green;
+            background: yellow;
+            background: linear-gradient(to top right, #000, #f00 50%, #090);
+        }
+
+        .box li {
+            line-height: 30px;
+            position: relative;
+        }
+
+        .box em {
+            top: 7px;
+            left: 0;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: black;
+            cursor: pointer;
+        }
+
+        .box span {
+            display: block;
+            padding-left: 20px;
+
+        }
+
+        .box em.open {
+            background: white;
+        }
+
+        .box .two {
+            margin-left: 20px;
+        }
+
+        .box .three {
+            margin-left: 40px;
+        }
+
+        .box .four {
+            margin-left: 60px;
+        }
+
+        .box .two,
+        .box .three,
+        .box .four {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <ul>
+            <li>
+                <em></em>
+                <span>第一级第一个</span>
+                <ul class="two">
+                    <li>
+                        <span>第二级第一个</span>
+                    </li>
+                    <li>
+                        <em></em>
+                        <span>第二级第二个</span>
+                        <ul class="three">
+                            <li>
+                                <span>第三极第一个</span>
+                            </li>
+                            <li>
+                                <span>第三极第二个</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>第三极第三个</span>
+                                <ul class="four">
+                                    <li>
+                                        <span>第四极第一个</span>
+                                    </li>
+                                    <li>
+                                        <span>第四极第二个</span>
+                                    </li>
+                                    <li>
+                                        <span>第四极第三个</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <em></em>
+                        <span>第二级第三个</span>
+                        <ul class="three">
+                            <li>
+                                <span>第三极第一个</span>
+                            </li>
+                            <li>
+                                <span>第三极第二个</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>第三级第三个</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+
+
+
+<script src="utils.js">
+</script>
+
+<script>
+    //把列表中的span（前面有em的span）设置一个鼠标小手
+    var box = document.getElementById('box')
+    var spanList = box.getElementsByTagName('span')
+
+    for (let i = 0; i < spanList.length; i++) {
+        var curSpan = spanList[i]
+        var curPre = utils.prev(curSpan) //获取span的上一个哥哥元素节点
+        if (curPre && curPre.tagName.toLowerCase() === 'em') {
+            curSpan.style.cursor = 'pointer'
+        }
+    }
+
+    // 使用事件委托 实现操作
+    box.onclick = function (e) {
+        var tar = e.target
+        if (/^(em|span$)/i.test(tar.tagName)) {
+            var parent = tar.parentNode
+            // var firstUl = utils.getChildren(parent,'ul')[0]
+            var firstUl = parent.getElementsByTagName('ul')[0]
+            var firstEm = parent.getElementsByTagName('em')[0]
+            console.log(firstUl)
+            if (firstUl) {//只有存在第一个ul我们才进行相关操作
+                // 如果这个ul当前是隐藏，我们让显示，否则让隐藏
+                var isBlock = utils.getCss(firstUl, 'display') === 'block' ? true : false
+                if(isBlock){//当前是显示的
+                    firstUl.style.display = 'none'
+                    firstEm.setAttribute('class','')
+                }else{//当前是隐藏的，我们让其显示
+                    firstUl.style.display = 'block'
+                    firstEm.setAttribute('class','open')
+                }
+
+            }
+
+        }
+
+
+
+    }
+
+
+</script>
+
+</html>

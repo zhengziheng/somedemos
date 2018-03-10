@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+
+    }
+    body{
+        background: url(image/1.jpg) no-repeat
+    }
+    .box{
+        height: 300px;
+        background: rgba(255, 255, 255, alpha)
+    }
+    img{
+        cursor: pointer;
+        margin: 0 10px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="image/1.jpg" alt="" width="200px">
+        <img src="image/2.jpg" alt="" width="200px">
+        <img src="image/3.jpg" alt="" width="200px">
+        <img src="image/4.jpg" alt="" width="200px">
+        <img src="image/5.jpg" alt="" width="200px">
+    </div>
+
+
+<script>
+    var box = document.getElementsByTagName('div')[0]
+    var imgArr = box.children
+    var body = document.body //获取body
+
+    for (let i = 0; i < imgArr.length; i++) {
+        imgArr[i].index = i
+        imgArr[i].onclick = function () {
+            // body.style.backgroundImage = 'url(image/'+(this.index+1)+'.jpg)'
+            body.style.backgroundImage = "url("+this.src+")"
+        }
+        
+        
+    }
+
+
+
+</script>
+</body>
+</html>

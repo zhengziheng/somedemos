@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue1</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <style>
+        .del{
+            text-decoration: line-through
+        }
+        .clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+        .clearfloat{zoom:1} 
+        </style>
+        
+</head>
+
+<body>
+    <div id="app">
+        <nav class="navbar navbar-default navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        Todolist
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading ">
+                            <h3 class="text-danger">待完成事项{{count}}件</h3>
+                            <input type="text" class="form-control" v-model="title" @keyup.13="add">
+                            
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item clearfloat" v-for="(todo,index) in filterTodos" @dblclick="remember(todo)">
+                                    <!-- isSelected为true的情况下 del生效 -->
+                                    <span :class="{del:todo.isSelected}" v-show="cur!=todo"><input type="checkbox" v-model="todo.isSelected" >{{todo.title}}</span>
+                                    <input type="text" v-model="todo.title" v-show="cur==todo" @keyup.enter="cancel" @blur="cancel" >
+                                    <button class="pull-right btn btn-danger btn-xs" @click='remove(todo)'>&CircleTimes;</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="nav nav-pills">
+                                <li role="presentation"  :class="{active:hash==='all'}">
+                                    <a href="#/all" >全部任务</a>
+                                </li>
+                                <li role="presentation" :class="{active:hash==='finish'}">
+                                    <a href="#/finish" >已完成</a>
+                                </li>
+                                <li role="presentation" :class="{active:hash==='unfinish'}">
+                                    <a href="#/unfinish" >未完成</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="./node_modules/_vue@2.5.13@vue/dist/vue.js"></script>
+    <script src="./node_modules/_axios@0.18.0@axios/dist/axios.js"></script>
+    <script src="todo.js"></script>
+</body>
+
+</html>
