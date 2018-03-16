@@ -1,0 +1,261 @@
+body { min-width: 990px; background: #040404 url("../images/bg-top.jpg") 50% 0 no-repeat; color: #4a4a4a; }
+
+a:hover{
+    color: white!important;
+}
+/* nav star */
+.nav-wrapper{
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid #373938; 
+}
+.nav-wrapper a{
+    font: 400 20px/60px '微软雅黑';
+}
+.nav-content{
+    height: 60px;
+    width: 1600px;
+    margin: 0 auto;
+    
+}
+.nav-content a{
+    color: #B9B9B9;
+}
+
+.nav-left li {
+    float: left;
+    padding: 0 16px;
+
+}
+
+.nav-right li{
+    float: right;
+    padding: 0 16px;
+    
+    
+
+}
+.nav-left .pr,.nav-right .pr{
+    position: relative;
+    padding: 0 26px 0 16px;
+    
+}
+
+.nav-left i,.nav-right i{
+    position: absolute;
+    top: 29px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    /* background: red; */
+    overflow: hidden;
+
+
+}
+.nav-left s,.nav-right s{
+    position: absolute;
+    top: -7px;
+
+
+    
+
+}
+/* nav end */
+
+/* midele部分开始 */
+.middle-wrapper{
+    width: 1140px;
+    height: 457px;
+    margin: 0 auto;
+}
+.middle-logo a{
+    display: block;
+    width: 402px;
+    height: 92px;
+    background: url(../images/logo.png) no-repeat;
+    font-size:0; 
+    margin-top:54px;
+    margin-bottom: 62px
+}
+.learn-more h2{
+    width: 644px;
+    height: 79px;
+    font:500 28px/40px '微软雅黑';
+    margin-bottom: 26px;
+}
+.learn-more a{
+    color:#A2B9C2;
+}
+.learn-more span{
+    width: 96px;
+    height: 27px;
+    color: #566b73;
+    display: inline-block;
+    border: 1px solid #3a4c53;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 27px;
+    position: relative;
+    top: -5px;
+
+}
+.middle-content-left{
+    margin-left: 20px
+}
+.middle-content-left button{
+    width: 114px;
+    height: 34px;
+    background-color: #006EA0;
+    color: white;
+    line-height: 34px;
+    text-align: center;
+    border-radius: 3px;
+    margin-right: 13px;
+    
+}
+.middle-content-left login{
+    font-size: 15px;
+    color: #00B6FF;
+}
+
+.midele-content-right a{
+    display:block;
+    width: 256px;
+    height: 176px;
+    background: url(../images/app-screen-small.png)no-repeat;
+    position: relative;
+    top: -37px;
+}
+.midele-content-right span{
+    display: block;
+    position: absolute;
+    left:66px;
+    bottom: 0;
+
+}
+
+
+
+/* midele部分结束 */
+
+
+/* bottom部分开始 */
+.bottom-wrapper{
+    width: 1903px;
+    height: 417px;
+    background-color: #D3D1CE;
+    margin: 0 auto;
+    border-bottom: 2px solid #777674;
+}
+.home-page{
+    display: flex;
+    width: 1140px;
+    height: 383px;
+    margin: 0 auto;
+    position: relative; 
+    top: -65px;
+    left: 20px;
+}
+.game-column{
+    flex: 1;
+    width: 162px;
+    height: 392px;
+    margin-right: 26px;
+    border: 1px solid #3E414A;
+    background: url(../images/wow-cn.png) 0 0;
+}
+.game-column .game-tip{
+    width: 162px;
+    height: 392px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 14px;
+    color: #B2BAC7;
+    font-family: '微软雅黑';
+}
+.game-column.p2{
+    background: url(../images/diablo3-cn.png) 0 0;
+}
+.game-column.p3{
+    background: url(../images/starcraft2-cn.png) 0 0;
+}
+.game-column.p4{
+    background: url(../images/heroes-cn.png) 0 0;
+}
+.game-column.p5{
+    background: url(../images/hearthstone-cn.png) 0 0;
+}
+.game-column.p6{
+    background: url(../images/overwatch-cn.png) 0 0;
+}
+
+/* bottom部分结束 */
+
+
+
+
+
+/* footer star */
+.footer-wrapper{
+    width: 1903px;
+    height:371px;
+    background: #000;
+}
+.footer-main{
+    width: 474px;
+    height: 276px;
+    margin: 0 auto;
+}
+.footer-logo img{
+    margin: 35px auto;
+    display: block;
+}
+.footer-links ul{
+    margin: 0 auto;
+
+}
+.footer-links li{
+    float: left;
+    margin-right: 11px;
+}
+.footer-links a{
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.4;
+    font-size: 18px;
+    margin-right: 11px;
+    font-family: '微软雅黑';
+}
+.footer-slogen{
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+
+}
+.footer-law{
+    color: rgba(255, 255, 255, 0.7);
+}
+.footer-slogen i{
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    padding: 10px 5px; 
+}
+/* footer end */
+/* nav star */
+
+/* nav end */
+/* nav star */
+
+/* nav end */
+/* nav star */
+
+/* nav end */
+/* nav star */
+
+/* nav end */
+/* nav star */
+
+/* nav end */

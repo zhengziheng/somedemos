@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .box {
+            margin: 10px;
+            width: 300px;
+            padding: 10px;
+            border: 1px dashed green;
+            background: yellow;
+            background: linear-gradient(to top right, #000, #f00 50%, #090);
+        }
+
+        .box li {
+            line-height: 30px;
+            position: relative;
+        }
+
+        .box em {
+            top: 7px;
+            left: 0;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: black;
+            cursor: pointer;
+        }
+
+        .box span {
+            display: block;
+            padding-left: 20px;
+
+        }
+
+        .box em.open {
+            background: white;
+        }
+
+        .box .two {
+            margin-left: 20px;
+        }
+
+        .box .three {
+            margin-left: 40px;
+        }
+
+        .box .four {
+            margin-left: 60px;
+        }
+
+        .box .two,
+        .box .three,
+        .box .four {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+        <ul>
+            <li>
+                <em></em>
+                <span>第一级第一个</span>
+                <ul class="two">
+                    <li>
+                        <span>第二级第一个</span>
+                    </li>
+                    <li>
+                        <em></em>
+                        <span>第二级第二个</span>
+                        <ul class="three">
+                            <li>
+                                <span>第三极第一个</span>
+                            </li>
+                            <li>
+                                <span>第三极第二个</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>第三极第三个</span>
+                                <ul class="four">
+                                    <li>
+                                        <span>第四极第一个</span>
+                                    </li>
+                                    <li>
+                                        <span>第四极第二个</span>
+                                    </li>
+                                    <li>
+                                        <span>第四极第三个</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <em></em>
+                        <span>第二级第三个</span>
+                        <ul class="three">
+                            <li>
+                                <span>第三极第一个</span>
+                            </li>
+                            <li>
+                                <span>第三极第二个</span>
+                            </li>
+                            <li>
+                                <em></em>
+                                <span>第三级第三个</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+
+
+
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.js"></script>
+<script>
+    var $box = $('#box')
+    $box.find('span').each(function(){
+        //每一次循环的时候，当前循环的这个元素$(this)
+        var $pre = $(this).prev()
+        if($pre[0] && $pre[0].tagName.toLocaleLowerCase()==='em'){
+            $(this).css('cursor','pointer')
+        }
+    })
+    function fn(){
+        var $par = $(this).parent()
+        var $ul = $($par.children('ul')[0])
+        var $em = $($par.children('em')[0])
+        if($ul.length!==0){
+            $ul.toggle()
+            $em.toggleClass('open')
+            //当前的如果是收缩的话， 我们把子孙元素的ul/em都隐藏
+            var isBlock = $ul.css('display') ==='block'?true:false
+            if(!isBlock){
+                $par.find('ul').css('display','none')
+                $par.find('em').removeClass('open')
+
+            }
+        }
+
+
+    }
+    $box.delegate('em','click',fn)//给$box绑定点击事件，如果当前的事件源是em的话，我们执行fn
+    $box.delegate('span','click',fn)
+
+
+
+
+
+</script>
+</body>
+</html>
